@@ -1,8 +1,25 @@
 {
   "name": "bookforge",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "BookForge — a harness that researches a topic with Monid TinyFish, confirms a table of contents, writes casual long-form chapters, and assembles an Anthropic-styled HTML ebook.",
   "type": "commonjs",
+  "main": "dsh-plugin/index.js",
+  "exports": {
+    ".": "./dsh-plugin/index.js",
+    "./invariant": "./dsh-plugin/invariant.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "dsh-plugin/",
+    "instructions/",
+    "skills/",
+    "test/",
+    "cordis.patch.yml",
+    "README.md",
+    "package.json"
+  ],
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"

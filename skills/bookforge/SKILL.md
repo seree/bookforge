@@ -17,9 +17,11 @@ You are operating the BookForge harness: a pipeline that turns a topic into a
 casual, grounded, illustrated HTML ebook. Run stages in order and stop at
 every **user gate**.
 
-## Locate the CLI
+## Locating the CLI
 
-The repo is a zero-dependency Node CLI. Run commands from the repo root:
+If a native **`bookforge` tool** is available (registered by the BookForge DSH
+bundle), prefer it: `bookforge(command, book, extra)` shells out to the CLI for
+you. Otherwise fall back to bash:
 
 ```sh
 node <repo>/bin/bookforge.js <stage> --book <slug>
@@ -27,6 +29,7 @@ node <repo>/bin/bookforge.js <stage> --book <slug>
 
 or `bookforge <stage> --book <slug>` after `npm link`. Long-running runs: set
 `BOOKFORGE_NONINTERACTIVE=1` (or pass explicit args) so prompts never block.
+Books live under `<repo-parent>/books/<slug>` (override with `BOOKFORGE_BOOKS_ROOT`).
 
 ## Invariants
 

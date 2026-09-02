@@ -130,15 +130,23 @@ BookForge does the deterministic work (research fetch, QA gates, HTML assembly).
 
 **2. A DSH bundle (the full "plugin" citizen).**
 This repo declares `dsh.bundle.patch` in `package.json`, pointing at
-[`cordis.patch.yml`](cordis.patch.yml), which re-addresses the profile's
-`skill-filesystem` row (last write wins) to also scan this repo's `skills/` directory.
+[`cordis.patch.yml`](cordis.patch.yml). The patch does two things to the profile:
+
+- Re-addresses the base `skill-filesystem` row (last write wins per row id) to also scan
+  this repo's `skills/` directory, and
+- Inserts a `tool-bookforge` row that loads this package as a plugin. The plugin entry
+  (`dsh-plugin/index.js`) registers a native **`bookforge` tool** on the agent's tool
+  registry — a first-class tool call that shells out to the zero-dependency CLI, so an
+  agent can drive every pipeline stage (`status`, `research`, `chapter-prompt`, `assemble`,
+  …) without raw bash.
+
 So it can be layered into any DSH profile like any other bundle:
 
 ```bash
 dsh plugin --profile web add bookforge@<path-or-git-url>
 ```
 
-and the profile's layer stack reconciles it automatically. Note the bundled path is
+and the profile's layer stack reconciles it automatically. Note the bundled skill path is
 relative to the process cwd at boot — run DSH from inside the clone to pick up the skill.
 
 Verified on a DSH 0.1.1-rc.2 machine:

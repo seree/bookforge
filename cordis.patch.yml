@@ -17,3 +17,9 @@
   config:
     includeDefaultRoots: true
     bundledSkillDir: "skills/bookforge"
+
+# Native tool: register a `bookforge` tool (the CLI shipped in this package)
+# so an agent can drive pipeline stages with a first-class tool call.
+- insert:
+  - id: tool-bookforge
+    name: 'bookforge'
