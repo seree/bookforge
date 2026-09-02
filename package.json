@@ -1,0 +1,17 @@
+{
+  "name": "bookforge",
+  "version": "0.1.0",
+  "description": "BookForge — a harness that researches a topic with Monid TinyFish, confirms a table of contents, writes casual long-form chapters, and assembles an Anthropic-styled HTML ebook.",
+  "type": "commonjs",
+  "bin": {
+    "bookforge": "./bin/bookforge.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "bookforge": "node ./bin/bookforge.js",
+    "test": "node ./test/run.js"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,164 @@
+{
+  "schemas": "bookforge/v1",
+  "title": "Loop Engineering For Newbies",
+  "subtitle": "Designing the system that prompts your agent for you: stop conditions, context budgets, parallel checkouts, and maker-checker splits — explained for newbies",
+  "slug": "loop-engineering-for-newbies",
+  "author": "BookForge",
+  "date": "2026-09-02",
+  "genre": "Nonfiction",
+  "audience": "Curious general readers",
+  "tone": "Casual, fun, easy to follow",
+  "language": "en",
+  "topic": "Loop Engineering for Newbies",
+  "target": {
+    "chapters": 10,
+    "wordsPerChapter": "1000-1400"
+  },
+  "options": {
+    "illustrations": true,
+    "cover": true,
+    "illustrationTheme": "agent"
+  },
+  "outline": [
+    {
+      "num": 1,
+      "title": "Stop Prompting, Start Looping",
+      "summary": "The one-prompt-at-a-time era is ending: what 'loop engineering' actually means, the quotes that named it, and the buzzword-bingo around it.",
+      "grounding": [
+        "source-02.md",
+        "source-07.md",
+        "source-08.md",
+        "source-03.md"
+      ]
+    },
+    {
+      "num": 2,
+      "title": "The While Loop Under Your Agent",
+      "summary": "Every coding session is secretly a while loop: assemble context, reason, act, observe, repeat — where the ReAct pattern came from and why coding can't be done in one shot.",
+      "grounding": [
+        "source-05.md",
+        "source-01.md"
+      ]
+    },
+    {
+      "num": 3,
+      "title": "The Hardest Part Is Knowing When to Stop",
+      "summary": "Stop conditions as first-class design: what 'done' really means, goal checks versus 'the model stopped talking', iteration caps, timeouts, and spotting an agent spinning in place.",
+      "grounding": [
+        "source-05.md",
+        "source-01.md",
+        "source-03.md"
+      ]
+    },
+    {
+      "num": 4,
+      "title": "The Five Pieces (Plus the Memory)",
+      "summary": "The building blocks every loop needs — automations, worktrees, skills, connectors, sub-agents — plus the sixth thing that sounds too dumb to matter: a memory file outside the conversation.",
+      "grounding": [
+        "source-02.md",
+        "source-07.md"
+      ]
+    },
+    {
+      "num": 5,
+      "title": "Give Your Loop a Heartbeat",
+      "summary": "Making the loop actually run itself: scheduled automations, /loop, /goal, cron, and hooks — plus a real morning-triage loop run against Sentry alerts, and what it takes to trust it running.",
+      "grounding": [
+        "source-02.md",
+        "source-03.md"
+      ]
+    },
+    {
+      "num": 6,
+      "title": "Two Agents, Two Checkouts",
+      "summary": "The moment you run two agents, files start colliding: how worktrees keep parallel loops from stepping on each other, what 'isolation' means for context, and why your review bandwidth is the real ceiling.",
+      "grounding": [
+        "source-02.md",
+        "source-06.md",
+        "source-01.md"
+      ]
+    },
+    {
+      "num": 7,
+      "title": "The Agent Forgets. The Repo Doesn't.",
+      "summary": "State files, AGENTS.md conventions, structured note-taking, and skills — the on-disk memory that keeps a loop smart across runs, because the model forgets everything between sessions.",
+      "grounding": [
+        "source-02.md",
+        "source-06.md",
+        "source-05.md"
+      ]
+    },
+    {
+      "num": 8,
+      "title": "Your Context Window Is a Budget",
+      "summary": "How context bloats inside a loop: the 888-to-18,900 token growth curve, 'lost in the middle', compaction styles, thrashing, and the real benchmark numbers behind the trade-offs.",
+      "grounding": [
+        "source-06.md",
+        "source-05.md"
+      ]
+    },
+    {
+      "num": 9,
+      "title": "Keep the Maker Away from the Checker",
+      "summary": "Why the model that wrote the code is too nice grading its own homework: verifier sub-agents, QA passes at each step, loops that leave evidence behind, and making 'done' mean something.",
+      "grounding": [
+        "source-02.md",
+        "source-07.md",
+        "source-01.md",
+        "source-05.md"
+      ]
+    },
+    {
+      "num": 10,
+      "title": "Build the Loop. Stay the Engineer.",
+      "summary": "The honest fine print: loops that eat tokens, comprehension debt, cognitive surrender, and the human gates some decisions need — where to draw the line, and how to start with one small loop this weekend.",
+      "grounding": [
+        "source-02.md",
+        "source-07.md",
+        "source-03.md",
+        "source-08.md"
+      ]
+    }
+  ],
+  "research": {
+    "queries": 4,
+    "sources": 34,
+    "fetched": 8
+  },
+  "status": "complete",
+  "finished": "2026-09-02",
+  "sources": [
+    {
+      "title": "What Is Loop Engineering? The New Meta for AI Coding Agents",
+      "url": "https://www.mindstudio.ai/blog/what-is-loop-engineering-ai-coding-agents"
+    },
+    {
+      "title": "Loop Engineering",
+      "url": "https://addyosmani.com/blog/loop-engineering/"
+    },
+    {
+      "title": "Can anyone explain me “loop engineering” like I’m 5? It just keeps making no sense to me. : r/AI_Agents",
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1uvq0nh/can_anyone_explain_me_loop_engineering_like_im_5/"
+    },
+    {
+      "title": "https://x.com/addyosmani/article/2064127981161959567",
+      "url": "https://x.com/addyosmani/article/2064127981161959567"
+    },
+    {
+      "title": "The Agent Loop Decoded",
+      "url": "https://blogs.oracle.com/developers/the-agent-loop-decoded-three-levels-every-agent-engineer-must-know"
+    },
+    {
+      "title": "How to Implement Context Engineering Strategies for your Agent (Claude Code) ",
+      "url": "https://newsletter.victordibia.com/p/context-engineering-101-how-agents"
+    },
+    {
+      "title": "Designing Loops for Coding Agents | Addy Osmani posted on the topic | LinkedIn",
+      "url": "https://www.linkedin.com/posts/addyosmani_ai-softwareengineering-programming-activity-7469999258658791425-cTvy"
+    },
+    {
+      "title": "Loop Engineering",
+      "url": "https://pub.towardsai.net/loop-engineering-cafdc8a3acb6"
+    }
+  ]
+}
