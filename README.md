@@ -140,8 +140,24 @@ dsh plugin --profile web add bookforge@<path-or-git-url>
 
 and the profile's layer stack reconciles it automatically. Note the bundled path is
 relative to the process cwd at boot — run DSH from inside the clone to pick up the skill.
-Treat the bundle path as preview-grade on the current rc release; the skill path (1) is
-fully supported and does not depend on it.
+
+Verified on a DSH 0.1.1-rc.2 machine:
+
+```
+$ dsh plugin --profile bf-test add /path/to/bookforge
+$ dsh --profile bf-test --dump-config
+# == @deepseek-ai/dsh-base, patched by bookforge
+- id: skill-filesystem
+  name: '@deepseek-ai/dsh-skill-filesystem'
+  config:
+    includeDefaultRoots: true
+    bundledSkillDir: skills/bookforge
+```
+
+i.e. the bundle was reconciled into `dsh.profile.bundles` and its patch re-addressed the
+base `skill-filesystem` row (last-write-wins per row id), which is the same layering
+mechanism the in-box bundles use. Path (1) remains fully supported on its own and does not
+depend on the bundle path.
 
 ## Development
 
