@@ -107,6 +107,42 @@ diagrams, and the assembled single-file HTML. Open
 `examples/loop-engineering-for-newbies/loop-engineering-for-newbies.html` in a browser
 to see the output quality.
 
+## DeepSeek Harness (DSH) integration
+
+DSH is built on the "everything is a plugin" model: the harness itself is a stack of
+`cordis.patch.yml` patch layers, and every capability (agent, tools, UI, skills…) is a
+row in that stack that loads a plugin package. BookForge plugs into it the same way the
+built-ins do, at two levels:
+
+**1. The `bookforge` skill (works today, no install).**
+DSH skills are discovered from filesystem roots (`<project>/.dsh/skills`,
+`<project>/.agents/skills`, `~/.dsh/skills`, `~/.agents/skills`). Ship
+[`skills/bookforge/SKILL.md`](skills/bookforge/SKILL.md) into any of those roots — e.g.
+
+```bash
+mkdir -p ~/.dsh/skills && cp -r <clone>/skills/bookforge ~/.dsh/skills/
+```
+
+— and every DSH agent in that scope gets a `bookforge` skill: the full pipeline runbook
+(stages, commands, user gates, invariants) that the agent loads and drives with this
+zero-dependency CLI. The agent does the agent work (TOC, chapters, subagent delegation);
+BookForge does the deterministic work (research fetch, QA gates, HTML assembly).
+
+**2. A DSH bundle (the full "plugin" citizen).**
+This repo declares `dsh.bundle.patch` in `package.json`, pointing at
+[`cordis.patch.yml`](cordis.patch.yml), which re-addresses the profile's
+`skill-filesystem` row (last write wins) to also scan this repo's `skills/` directory.
+So it can be layered into any DSH profile like any other bundle:
+
+```bash
+dsh plugin --profile web add bookforge@<path-or-git-url>
+```
+
+and the profile's layer stack reconciles it automatically. Note the bundled path is
+relative to the process cwd at boot — run DSH from inside the clone to pick up the skill.
+Treat the bundle path as preview-grade on the current rc release; the skill path (1) is
+fully supported and does not depend on it.
+
 ## Development
 
 ```bash

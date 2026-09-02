@@ -1,0 +1,19 @@
+# BookForge DSH bundle patch.
+#
+# BookForge is a zero-dependency Node CLI; this patch makes its agent
+# playbook available to a DSH profile as the `bookforge` skill.
+#
+# The `skill-filesystem` row (defined by @deepseek-ai/dsh-base) is re-addressed
+# by id — last write wins per row — and restated with `bundledSkillDir`
+# pointing at this repo's skills folder. The relative path resolves against
+# the process cwd at boot, so run DSH from a clone of this repo
+# (e.g. `dsh web` inside the checkout) to pick up skills/bookforge.
+#
+# The default roots (project .dsh/.agents, user ~/.dsh, ~/.agents) are
+# unchanged; this row only adds the bundled directory.
+
+- id: skill-filesystem
+  name: '@deepseek-ai/dsh-skill-filesystem'
+  config:
+    includeDefaultRoots: true
+    bundledSkillDir: "skills/bookforge"

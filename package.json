@@ -1,8 +1,13 @@
 {
   "name": "bookforge",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "BookForge — a harness that researches a topic with Monid TinyFish, confirms a table of contents, writes casual long-form chapters, and assembles an Anthropic-styled HTML ebook.",
   "type": "commonjs",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
   "bin": {
     "bookforge": "./bin/bookforge.js"
   },
